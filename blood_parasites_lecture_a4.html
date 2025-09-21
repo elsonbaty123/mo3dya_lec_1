@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Parasites / Hemoprotozoal Diseases - Veterinary Parasitology Lecture</title>
+    <style>
+        /* A4 Page Setup */
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            color: #000;
+            background: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Print Control Panel */
+        .print-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .print-btn {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .secondary-btn {
+            background: #757575;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-btn:hover {
+            background: #616161;
+        }
+
+        /* Print Options */
+        .print-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 10px;
+            min-width: 200px;
+        }
+
+        .print-options.show {
+            display: block;
+        }
+
+        .print-option {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Page Layout */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin: 10mm auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            page-break-after: always;
+            position: relative;
+        }
+
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        /* Page Counter */
+        .page-number {
+            position: absolute;
+            bottom: 15mm;
+            right: 20mm;
+            color: #666;
+            font-size: 10pt;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+            
+            .print-controls,
+            .no-print {
+                display: none !important;
+            }
+            
+            .page-number {
+                display: block !important;
+            }
+        }
+
+        /* Content Styling */
+        h1 { 
+            font-size: 24pt; 
+            margin-bottom: 12pt;
+            color: #333;
+            text-align: center;
+            border-bottom: 3px solid #2196F3;
+            padding-bottom: 10pt;
+        }
+
+        h2 { 
+            font-size: 18pt; 
+            margin-top: 16pt; 
+            margin-bottom: 8pt;
+            color: #444;
+            border-left: 4px solid #4CAF50;
+            padding-left: 10pt;
+        }
+
+        h3 { 
+            font-size: 14pt; 
+            margin-top: 12pt; 
+            margin-bottom: 6pt;
+            color: #555;
+        }
+
+        /* Special Content Styling */
+        .audio-note {
+            background: #FFF3E0;
+            border-left: 4px solid #FF9800;
+            padding: 10pt;
+            margin: 10pt 0;
+            font-style: italic;
+        }
+
+        .exam-questions {
+            background: #E8F5E8;
+            border: 2px solid #4CAF50;
+            padding: 15pt;
+            margin: 15pt 0;
+            border-radius: 5pt;
+        }
+
+        .key-terms {
+            background: #E3F2FD;
+            border: 2px solid #2196F3;
+            padding: 15pt;
+            margin: 15pt 0;
+            border-radius: 5pt;
+        }
+
+        .bullet-point {
+            color: #2196F3;
+            font-weight: bold;
+        }
+
+        .sub-bullet {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .sub-sub-bullet {
+            color: #FF9800;
+        }
+
+        /* Floating Action Button */
+        .fab-print {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .fab-print:hover {
+            transform: scale(1.1);
+            background: #45a049;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #333;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            display: none;
+            z-index: 1001;
+        }
+
+        .toast.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Print Preview Modal */
+        .print-preview-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+        }
+
+        .print-preview-content {
+            background: white;
+            width: 90%;
+            height: 90%;
+            margin: 2% auto;
+            padding: 20px;
+            overflow-y: auto;
+            border-radius: 10px;
+        }
+
+        ul, ol {
+            margin: 8pt 0;
+            padding-left: 20pt;
+        }
+
+        li {
+            margin: 4pt 0;
+        }
+
+        .section-divider {
+            border-top: 2px solid #ddd;
+            margin: 20pt 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Print Control Panel -->
+    <div class="print-controls no-print">
+        <button class="print-btn" onclick="printDocument()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
+            </svg>
+            Print Document
+        </button>
+        
+        <button class="secondary-btn" onclick="togglePrintOptions()">
+            ⚙️ Options
+        </button>
+        
+        <button class="secondary-btn" onclick="printPreview()">
+            👁️ Preview
+        </button>
+        
+        <div class="print-options" id="printOptions">
+            <div class="print-option">
+                <input type="checkbox" id="printHeaders" checked>
+                <label for="printHeaders">Print Headers</label>
+            </div>
+            <div class="print-option">
+                <input type="checkbox" id="printPageNumbers" checked>
+                <label for="printPageNumbers">Page Numbers</label>
+            </div>
+            <div class="print-option">
+                <input type="checkbox" id="printImages" checked>
+                <label for="printImages">Include Images</label>
+            </div>
+            <div class="print-option">
+                <input type="checkbox" id="printColors">
+                <label for="printColors">Color Printing</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <button class="fab-print no-print" onclick="quickPrint()" title="Quick Print">
+        🖨️
+    </button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Print Preview Modal -->
+    <div class="print-preview-modal" id="printPreviewModal">
+        <div class="print-preview-content">
+            <button onclick="closePrintPreview()" style="float: right;">✖️ Close</button>
+            <h2>Print Preview</h2>
+            <hr>
+            <div id="previewContent"></div>
+        </div>
+    </div>
+
+    <!-- Document Pages -->
+    <div class="page">
+        <header>
+            <h1>BLOOD PARASITES / HEMOPROTOZOAL DISEASES</h1>
+            <p style="text-align: center; color: #666; font-size: 14pt; margin-bottom: 20pt;">
+                Veterinary Parasitology Lecture<br>
+                Comprehensive Study Guide
+            </p>
+            <hr style="margin: 20px 0;">
+        </header>
+        
+        <section>
+            <h2>I. PROBLEM OF BLOOD PARASITES IN EGYPT</h2>
+            
+            <h3><span class="bullet-point">🔸</span> Environmental Factors</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Environmental conditions suitable for tick vectors almost year-round
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Climate allows ticks to thrive throughout all seasons</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Animal housing construction promotes tick growth
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Materials used in animal houses provide ideal environment for ticks</li>
+                        <li><span class="sub-sub-bullet">➤</span> Structures offer hiding places and breeding grounds for ticks</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Infrequent use of acaricides
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Lack of regular tick control measures</li>
+                        <li><span class="sub-sub-bullet">➤</span> Inadequate application when used</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3><span class="bullet-point">🔸</span> Cultural Factors</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Some owners prefer presence of ticks on animals
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Belief that ticks may have beneficial effects</li>
+                        <li><span class="sub-sub-bullet">➤</span> Lack of awareness about negative impacts</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor emphasized that in Egypt, there's a cultural issue where some animal owners actually prefer having ticks on their animals, which contributes to the problem. Additionally, the environmental conditions in Egypt allow ticks to thrive throughout the year, making control difficult.
+            </div>
+
+            <div class="exam-questions">
+                <h3>EXAM QUESTIONS:</h3>
+                <ol>
+                    <li>List four factors contributing to the problem of blood parasites in Egypt.</li>
+                    <li>Discuss how environmental conditions in Egypt affect tick vector populations.</li>
+                    <li>Explain why animal housing construction in Egypt may promote tick growth.</li>
+                </ol>
+            </div>
+
+            <div class="key-terms">
+                <h3>KEY TERMS:</h3>
+                <ul>
+                    <li><strong>Acaricides:</strong> Chemical agents used to kill ticks and mites</li>
+                    <li><strong>Vector:</strong> An organism that transmits infectious disease</li>
+                </ul>
+            </div>
+        </section>
+        
+        <div class="page-number">Page 1</div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page">
+        <section>
+            <div class="section-divider"></div>
+            
+            <h2>II. TYPES OF BLOOD PARASITES</h2>
+            
+            <h3><span class="bullet-point">🔸</span> Classification by Location</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Intracellular blood parasites
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Babesia species</li>
+                        <li><span class="sub-sub-bullet">➤</span> Theileria species</li>
+                        <li><span class="sub-sub-bullet">➤</span> Live inside red blood cells</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Intercellular blood parasites
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Trypanosoma species</li>
+                        <li><span class="sub-sub-bullet">➤</span> Filaria species</li>
+                        <li><span class="sub-sub-bullet">➤</span> Located between cells in the bloodstream</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that intracellular parasites live inside the red blood cells, while intercellular parasites live between the cells in the blood. This distinction is important for understanding their pathogenesis and treatment approaches.
+            </div>
+
+            <div class="exam-questions">
+                <h3>EXAM QUESTIONS:</h3>
+                <ol>
+                    <li>Differentiate between intracellular and intercellular blood parasites with examples.</li>
+                    <li>Classify Babesia, Theileria, Trypanosoma, and Filaria according to their location in blood.</li>
+                    <li>Explain why the location of blood parasites affects their pathogenesis.</li>
+                </ol>
+            </div>
+
+            <div class="key-terms">
+                <h3>KEY TERMS:</h3>
+                <ul>
+                    <li><strong>Intracellular:</strong> Located within cells</li>
+                    <li><strong>Intercellular:</strong> Located between cells</li>
+                </ul>
+            </div>
+
+            <div class="section-divider"></div>
+            
+            <h2>III. DISEASE DEFINITION AND APPROACH</h2>
+            
+            <h3><span class="bullet-point">🔸</span> Components of a Disease Definition</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Disease name (scientific and common names)
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Scientific name: Based on causative agent (e.g., Babesiosis)</li>
+                        <li><span class="sub-sub-bullet">➤</span> Common names: Based on clinical signs or geographic location</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Causative agent
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Specific organism responsible for the disease</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Host species affected
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Which animals can be infected</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Mode of transmission
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> How the disease spreads between hosts</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Characteristic clinical signs
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Key symptoms that help identify the disease</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Important pathological features
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Tissue changes and lesions associated with the disease</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor spent considerable time explaining how to properly define a disease. A good definition should be concise but comprehensive, capturing the essence of the disease. The professor emphasized that the term "Red Water Fever" comes from the characteristic red-colored urine due to hemoglobinuria, which is a key diagnostic feature.
+            </div>
+        </section>
+        
+        <div class="page-number">Page 2</div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page">
+        <section>
+            <div class="exam-questions">
+                <h3>EXAM QUESTIONS:</h3>
+                <ol>
+                    <li>Outline the essential components of a comprehensive disease definition.</li>
+                    <li>Explain why characteristic clinical signs are important in disease definition.</li>
+                    <li>Discuss how the mode of transmission affects disease control strategies.</li>
+                </ol>
+            </div>
+
+            <div class="key-terms">
+                <h3>KEY TERMS:</h3>
+                <ul>
+                    <li><strong>Pathognomonic:</strong> A sign or symptom that is characteristic of a particular disease</li>
+                    <li><strong>Causative agent:</strong> The microorganism that causes a disease</li>
+                </ul>
+            </div>
+
+            <div class="section-divider"></div>
+            
+            <h2>IV. BABESIOSIS (TEXAS FEVER, RED WATER FEVER, CATTLE TICK FEVER)</h2>
+            
+            <h3><span class="bullet-point">🔸</span> Definition</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Disease caused by Babesia species
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Affects cattle, buffalo, sheep, pigs, horses, and dogs</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Characteristic features:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Fever</li>
+                        <li><span class="sub-sub-bullet">➤</span> Intravascular hemolysis</li>
+                        <li><span class="sub-sub-bullet">➤</span> Syndrome of anemia, hemoglobinemia, hemoglobinuria, jaundice</li>
+                        <li><span class="sub-sub-bullet">➤</span> Frequently fatal</li>
+                        <li><span class="sub-sub-bullet">➤</span> Enlargement of the spleen</li>
+                        <li><span class="sub-sub-bullet">➤</span> Transmitted by blood-sucking ticks</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3><span class="bullet-point">🔸</span> Etiology</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Species distribution by host:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Cattle:
+                            <ul>
+                                <li>Large species: Babesia bigemina, Babesia major</li>
+                                <li>Small species: Babesia bovis, Babesia divergens</li>
+                            </ul>
+                        </li>
+                        <li><span class="sub-sub-bullet">➤</span> Water buffaloes: Babesia bovis, Babesia bigemina</li>
+                        <li><span class="sub-sub-bullet">➤</span> Sheep and goat:
+                            <ul>
+                                <li>Large species: Babesia motasi</li>
+                                <li>Small species: Babesia ovis</li>
+                            </ul>
+                        </li>
+                        <li><span class="sub-sub-bullet">➤</span> Pigs: Babesia trautmanni, Babesia perroncitoi</li>
+                        <li><span class="sub-sub-bullet">➤</span> Horses: Babesia equi, Babesia caballi</li>
+                        <li><span class="sub-sub-bullet">➤</span> Dogs: Babesia canis, Babesia gibsoni</li>
+                        <li><span class="sub-sub-bullet">➤</span> Cat: Babesia felis</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor emphasized that the "large" and "small" species classification refers to the size of the parasites within the red blood cells. The small species are generally more resistant to treatment and cause more severe disease. The large species are easier to see under the microscope but cause a more acute disease that responds better to treatment.
+            </div>
+        </section>
+        
+        <div class="page-number">Page 3</div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page">
+        <section>
+            <h3><span class="bullet-point">🔸</span> Transmission</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Biological transmission by ticks:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Transovarial transmission: From adult female to eggs</li>
+                        <li><span class="sub-sub-bullet">➤</span> Stage-to-stage transmission: Between life stages of tick</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Vector species:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Boophilus species</li>
+                        <li><span class="sub-sub-bullet">➤</span> Ixodes species</li>
+                        <li><span class="sub-sub-bullet">➤</span> Rhipicephalus species</li>
+                        <li><span class="sub-sub-bullet">➤</span> Haemaphysalis species</li>
+                        <li><span class="sub-sub-bullet">➤</span> Dermacentor species</li>
+                        <li><span class="sub-sub-bullet">➤</span> Hyalomma species</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Mechanical transmission:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> By other insects</li>
+                        <li><span class="sub-sub-bullet">➤</span> Contaminated needles and surgical instruments</li>
+                        <li><span class="sub-sub-bullet">➤</span> Depends on degree of parasitemia</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor provided a detailed explanation of tick transmission cycles:
+                <br>- Transovarial transmission: The parasite passes from the adult female tick to her eggs, so the next generation is already infected.
+                <br>- Stage-to-stage transmission: The parasite passes from one life stage of the tick to the next (e.g., larva to nymph, nymph to adult).
+                <br>- Mechanical transmission: Can occur through contaminated instruments, but this is less common and depends on the level of parasites in the blood.
+                <br><br>The professor also explained that ticks have different life cycle patterns:
+                <br>- One-host ticks: Complete their entire life cycle on a single host
+                <br>- Two-host ticks: Complete their life cycle on two hosts
+                <br>- Three-host ticks: Complete their life cycle on three hosts
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Life Cycle</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Cycle progression:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Tick vector → Vertebrate host</li>
+                        <li><span class="sub-sub-bullet">➤</span> Sporozoites → Salivary glands → Blood</li>
+                        <li><span class="sub-sub-bullet">➤</span> Merogony → Merozoites → Gametocytes</li>
+                        <li><span class="sub-sub-bullet">➤</span> Fusion → Zygote → Kinetoplast → Kinete</li>
+                        <li><span class="sub-sub-bullet">➤</span> Gut → Hemolymph</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor elaborated on the life cycle, explaining that when an infected tick bites an animal, it injects sporozoites into the bloodstream. These sporozoites enter red blood cells and undergo merogony (asexual reproduction), producing merozoites. The merozoites can infect more red blood cells or develop into gametocytes. When another tick bites the infected animal, it ingests the gametocytes, which then fuse to form a zygote in the tick's gut. The zygote develops into a kinete, which migrates to the tick's hemolymph and eventually to the salivary glands, completing the cycle.
+            </div>
+        </section>
+        
+        <div class="page-number">Page 4</div>
+    </div>
+
+    <!-- Page 5 -->
+    <div class="page">
+        <section>
+            <h3><span class="bullet-point">🔸</span> Clinical Signs</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> General signs:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Fever (41°C)</li>
+                        <li><span class="sub-sub-bullet">➤</span> Anorexia</li>
+                        <li><span class="sub-sub-bullet">➤</span> Depression</li>
+                        <li><span class="sub-sub-bullet">➤</span> Weakness</li>
+                        <li><span class="sub-sub-bullet">➤</span> Cessation of rumination</li>
+                        <li><span class="sub-sub-bullet">➤</span> Fall in milk yield</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Hematological signs:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Anemia</li>
+                        <li><span class="sub-sub-bullet">➤</span> Hemoglobinuria</li>
+                        <li><span class="sub-sub-bullet">➤</span> Mucous membranes first congested but soon become pale, then icteric</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Urinary changes:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Urine dark red to brown in color</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Reproductive effects:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Abortion sometimes observed</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Vector presence:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Ticks present on affected cattle</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Neurological form (Cerebral babesiosis):
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Incoordination</li>
+                        <li><span class="sub-sub-bullet">➤</span> Posterior paralysis</li>
+                        <li><span class="sub-sub-bullet">➤</span> Mania</li>
+                        <li><span class="sub-sub-bullet">➤</span> Convulsions</li>
+                        <li><span class="sub-sub-bullet">➤</span> Coma</li>
+                        <li><span class="sub-sub-bullet">➤</span> High mortality despite treatment</li>
+                        <li><span class="sub-sub-bullet">➤</span> Related to accumulation of infected erythrocytes within brain capillaries</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor emphasized that the hemoglobinuria in babesiosis gives the urine a characteristic red to tea-like color, which is different from hematuria (where whole red blood cells are in the urine). The professor also noted that cerebral babesiosis is a severe form with poor prognosis, characterized by neurological signs due to infected red blood cells accumulating in brain capillaries.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Diagnosis</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Field diagnosis:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Presence of tick vector</li>
+                        <li><span class="sub-sub-bullet">➤</span> Clinical findings</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Laboratory diagnosis:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Blood smear examination:
+                            <ul>
+                                <li>Prepare thin blood film from ear vein during fever</li>
+                                <li>Fix in absolute methyl alcohol for 1-2 minutes</li>
+                                <li>Stain with Giemsa stain 8-10% for 45-60 minutes</li>
+                                <li>Wash with tap water, air dry, examine under oil immersion lens</li>
+                            </ul>
+                        </li>
+                        <li><span class="sub-sub-bullet">➤</span> Hemolymph smear:
+                            <ul>
+                                <li>Fix full/half engorged female tick with entomological forceps</li>
+                                <li>Cut first coxae using micro-scissor under binocular microscope</li>
+                                <li>Pick up transparent hemolymph on clean slide</li>
+                                <li>Dry, fix and stain with Giemsa stain, examine under oil immersion lens</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        
+        <div class="page-number">Page 5</div>
+    </div>
+
+    <!-- Page 6 -->
+    <div class="page">
+        <section>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Serological tests:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Fluorescent antibody (FA)</li>
+                        <li><span class="sub-sub-bullet">➤</span> Complement fixation test</li>
+                        <li><span class="sub-sub-bullet">➤</span> ELISA</li>
+                        <li><span class="sub-sub-bullet">➤</span> Agglutination tests</li>
+                        <li><span class="sub-sub-bullet">➤</span> Precipitation tests</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Differential diagnosis:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Post-parturient hemoglobinuria</li>
+                        <li><span class="sub-sub-bullet">➤</span> Leptospirosis</li>
+                        <li><span class="sub-sub-bullet">➤</span> Bacillary hemoglobinuria</li>
+                        <li><span class="sub-sub-bullet">➤</span> Chronic copper poisoning</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor provided practical tips for diagnosis:
+                <br>- The best time to detect parasites in blood is during fever peaks when parasitemia is highest.
+                <br>- For hemolymph smears, it's important to use partially engorged female ticks as they're more likely to have detectable parasites.
+                <br>- The professor emphasized the importance of differentiating between hemoglobinuria and hematuria by allowing a urine sample to stand; in hemoglobinuria, the supernatant remains red, while in hematuria, the red blood cells settle and the supernatant becomes clear.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Treatment</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Diminazene aceturate (Berenil):
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Dosage: 3.5 mg/kg body weight</li>
+                        <li><span class="sub-sub-bullet">➤</span> Administration: Deep intramuscular</li>
+                        <li><span class="sub-sub-bullet">➤</span> Note: Highly irritant</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Imidocarb (Imizol):
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Dosage: 1 mg/kg body weight (1 ml/100kg)</li>
+                        <li><span class="sub-sub-bullet">➤</span> Administration: Subcutaneous injection</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained the difference between these two drugs:
+                <br>- Diminazene aceturate (Berenil) acts quickly and kills all parasites, but doesn't allow the animal to develop immunity, making it susceptible to reinfection.
+                <br>- Imidocarb acts more slowly, allowing some parasites to remain and stimulate immunity development (premunition), which provides protection against future infections.
+                <br><br>The professor also emphasized the importance of correct dosage and administration routes to avoid treatment failures and potential toxicity.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Control</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Tick control:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Use of acaricides (organophosphorus compounds)</li>
+                        <li><span class="sub-sub-bullet">➤</span> Application methods: Spraying or dipping</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Chemo immunization:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Used in endemic areas for introducing susceptible cattle</li>
+                        <li><span class="sub-sub-bullet">➤</span> Creates premunity</li>
+                        <li><span class="sub-sub-bullet">➤</span> Procedure:
+                            <ul>
+                                <li>Blood containing Babesia organism collected in EDTA from splenectomized donor during acute stage</li>
+                                <li>Inject intramuscular on same day of collection</li>
+                                <li>Control post-premunition reactions (fever, anemia, parasitemia) with imidocarb</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that premunity is a state where the animal carries a low level of infection without showing clinical signs, which protects against more severe disease. This is different from true immunity, as the animal is still infected. The professor also noted that tick control in Egypt is challenging due to environmental conditions, housing structures that favor ticks, and cultural practices.
+            </div>
+        </section>
+        
+        <div class="page-number">Page 6</div>
+    </div>
+
+    <!-- Page 7 - Final Page with Summary -->
+    <div class="page">
+        <section>
+            <div class="exam-questions">
+                <h3>BABESIOSIS - EXAM QUESTIONS:</h3>
+                <ol>
+                    <li>Define Babesiosis and list its characteristic clinical features.</li>
+                    <li>Differentiate between large and small Babesia species with examples.</li>
+                    <li>Describe the life cycle of Babesia in both the vertebrate host and tick vector.</li>
+                    <li>Outline the laboratory methods used for diagnosis of Babesiosis.</li>
+                    <li>Compare and contrast the mechanisms of action and effects of Diminazene aceturate and Imidocarb in treating Babesiosis.</li>
+                    <li>Explain the concept of premunity and how chemo immunization works in Babesiosis control.</li>
+                </ol>
+            </div>
+
+            <div class="key-terms">
+                <h3>BABESIOSIS - KEY TERMS:</h3>
+                <ul>
+                    <li><strong>Hemoglobinuria:</strong> Presence of hemoglobin in urine</li>
+                    <li><strong>Parasitemia:</strong> Presence of parasites in the blood</li>
+                    <li><strong>Sporozoites:</strong> The infective stage of sporozoan parasites</li>
+                    <li><strong>Merogony:</strong> Asexual reproduction in protozoa</li>
+                    <li><strong>Merozoites:</strong> Products of merogony that infect new cells</li>
+                    <li><strong>Premunity:</strong> A form of immunity where the host harbors the parasite without showing clinical signs</li>
+                </ul>
+            </div>
+
+            <div class="section-divider"></div>
+            
+            <h2>V. THEILERIOSIS (MEDITERRANEAN COAST FEVER, TROPICAL THEILERIOSIS, EAST COAST FEVER)</h2>
+            
+            <h3><span class="bullet-point">🔸</span> Definition</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Tick-borne protozoan diseases
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Caused by Theileria species</li>
+                        <li><span class="sub-sub-bullet">➤</span> Affects cattle, sheep, goats, and wild ruminants</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Characterized by:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Fever</li>
+                        <li><span class="sub-sub-bullet">➤</span> Lymphoproliferative disorders</li>
+                        <li><span class="sub-sub-bullet">➤</span> Associated with leucopenia and/or anemia</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that Theileriosis is sometimes called "Mediterranean Coast Fever" because it's common in Mediterranean regions, including Egypt. The term "Tropical Theileriosis" refers to its occurrence in tropical regions, while "East Coast Fever" specifically refers to Theileria parva infection in East Africa.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Etiology</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Theileria annulata:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Found in Mediterranean and subtropical regions</li>
+                        <li><span class="sub-sub-bullet">➤</span> Causes Mediterranean coast fever or tropical theileriosis</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Theileria parva:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Found in East and Central Africa</li>
+                        <li><span class="sub-sub-bullet">➤</span> Causes East coast fever</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Ovine and caprine theileriosis:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Caused by Theileria hirci and Theileria ovis</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor emphasized that Theileria annulata is the most important species in Egypt and the Mediterranean region. It primarily affects cattle but can also infect buffalo. Theileria parva is more virulent and causes East Coast Fever in Africa, but is not present in Egypt.
+            </div>
+            
+            <div class="exam-questions">
+                <h3>FINAL COMPREHENSIVE QUESTIONS:</h3>
+                <ol>
+                    <li>List and describe the four main types of blood parasites covered in this lecture.</li>
+                    <li>Explain the problem of blood parasites in Egypt, including environmental, housing, and cultural factors.</li>
+                    <li>Differentiate between intracellular and intercellular blood parasites with examples.</li>
+                    <li>Compare and contrast the clinical signs of Babesiosis and Anaplasmosis.</li>
+                    <li>Discuss the control strategies for tick-borne diseases, highlighting both vector control and host-focused approaches.</li>
+                </ol>
+            </div>
+
+            <div style="text-align: center; margin-top: 40pt; padding: 20pt; border: 2px solid #2196F3; border-radius: 10pt; background: #E3F2FD;">
+                <h3 style="color: #1976D2; margin-bottom: 10pt;">Study Guide Complete</h3>
+                <p style="font-size: 14pt; color: #333;">This comprehensive guide covers all essential aspects of blood parasites and hemoprotozoal diseases in veterinary parasitology.</p>
+                <p style="font-size: 12pt; color: #666; font-style: italic;">For additional study materials and practice questions, consult your course textbook and laboratory manual.</p>
+            </div>
+        </section>
+        
+        <div class="page-number">Page 7</div>
+    </div>
+
+    <!-- Page 8 -->
+    <div class="page">
+        <section>
+            <h3><span class="bullet-point">🔸</span> Transmission</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Vector:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Theileria annulata transmitted by three-host tick Hyalomma species</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Transmission method:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Trans-stadial transmission (between life stages of tick)</li>
+                        <li><span class="sub-sub-bullet">➤</span> Not transovarial (not passed to eggs)</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Infection timeline:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Cattle become infected 2-4 days after tick has started to feed</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that trans-stadial transmission means the parasite passes from one life stage of the tick to the next (e.g., larva to nymph, nymph to adult), but not to the eggs (transovarial transmission does not occur in Theileria). This is an important difference from Babesia transmission. The professor also noted that Hyalomma ticks are three-host ticks, meaning they drop off the host between each life stage, which facilitates the spread of the disease to different animals.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Pathogenesis</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Infection process:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Sporozoites injected by ticks infect lymphocytes</li>
+                        <li><span class="sub-sub-bullet">➤</span> Schizonts develop in lymphocytes</li>
+                        <li><span class="sub-sub-bullet">➤</span> Schizonts transform lymphocytes into continuously dividing cells</li>
+                        <li><span class="sub-sub-bullet">➤</span> Lymphocytes carrying schizonts circulate and spread infection</li>
+                        <li><span class="sub-sub-bullet">➤</span> Merogony produces merozoites that infect RBCs</li>
+                        <li><span class="sub-sub-bullet">➤</span> Piroplasms develop in RBCs</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor elaborated on the pathogenesis, explaining that Theileria has a unique life cycle compared to other blood parasites. It first infects lymphocytes, where it forms schizonts (also called Koch's blue bodies) that cause the lymphocytes to divide continuously. This leads to lymphoproliferative disorders and lymph node enlargement. Later, the parasite infects red blood cells, forming piroplasms, which cause anemia. This dual infection of both white and red blood cells is characteristic of Theileria.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Clinical Signs</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Early signs:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> First sign: Enlargement of lymph nodes in area draining site of tick attachment</li>
+                        <li><span class="sub-sub-bullet">➤</span> One or two days later: Fever, depression, anorexia, drop in milk yield</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Later stages:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Nasal and ocular discharges</li>
+                        <li><span class="sub-sub-bullet">➤</span> Dyspnea (difficulty breathing)</li>
+                        <li><span class="sub-sub-bullet">➤</span> Severe cases: Diarrhea sometimes with dysentery</li>
+                        <li><span class="sub-sub-bullet">➤</span> Corneal opacity often observed in later stages</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor emphasized that the initial enlargement of the lymph node closest to the tick attachment site is a characteristic early sign of Theileriosis. This is followed by fever and general signs of illness. In later stages, respiratory signs (nasal discharge, dyspnea) and corneal opacity may develop. The professor noted that corneal opacity is a distinctive feature that can help differentiate Theileriosis from other diseases.
+            </div>
+        </section>
+        
+        <div class="page-number">Page 8</div>
+    </div>
+
+    <!-- Page 9 -->
+    <div class="page">
+        <section>
+            <h3><span class="bullet-point">🔸</span> Diagnosis</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Field diagnosis:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Suspected from signs:
+                            <ul>
+                                <li>Fever</li>
+                                <li>Enlarged peripheral lymph nodes</li>
+                                <li>Simultaneous infection with vector ticks</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Laboratory diagnosis:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Blood film for demonstration of piroplasms</li>
+                        <li><span class="sub-sub-bullet">➤</span> Detection of intralymphocytic schizonts or macrochiyonts ("Koch's blue bodies") in Giemsa stained smears from enlarged lymph nodes</li>
+                        <li><span class="sub-sub-bullet">➤</span> Serological tests:
+                            <ul>
+                                <li>Immunofluorescence</li>
+                                <li>Complement fixation</li>
+                                <li>Indirect hemagglutination</li>
+                                <li>ELISA tests</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Differential diagnosis:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Can be confused with malignant catarrhal fever</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor provided practical diagnostic tips:
+                <br>- For lymph node smears, it's important to sample the enlarged lymph node and prepare a good quality smear to detect the schizonts.
+                <br>- The "Koch's blue bodies" (schizonts) are diagnostic for Theileriosis and can be seen in lymph node smears.
+                <br>- Blood films may show piroplasms in red blood cells, but these can be confused with Babesia, so lymph node examination is more specific.
+                <br>- The professor noted that corneal opacity, when present, is a strong indicator of Theileriosis.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Treatment</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> General considerations:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Generally considered unsatisfactory or expensive</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Specific drugs:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Buparvaquone (Butalex):
+                            <ul>
+                                <li>Dosage: 2.5 mg/kg body weight (1 ml/20 kg)</li>
+                                <li>Administration: Intramuscular</li>
+                                <li>Regimen: Two doses 48-72 hours apart</li>
+                            </ul>
+                        </li>
+                        <li><span class="sub-sub-bullet">➤</span> Tetracyclines as oxytetracycline injections:
+                            <ul>
+                                <li>Dosage: 20 mg/kg body weight</li>
+                                <li>Administration: Intramuscular</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that treatment of Theileriosis is challenging because the parasite infects lymphocytes, making it harder to reach with drugs. Buparvaquone is the most effective drug but is expensive. Tetracyclines have some effect, especially when used early in the disease. The professor emphasized that early treatment is crucial for success.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Control</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Tick vector control</li>
+                <li><span class="sub-bullet">🔹</span> Immunotherapy ("infection-and-treatment method"):
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Cryopreserved suspensions of Theileria sporozoites from ground-up infected ticks injected into animal</li>
+                        <li><span class="sub-sub-bullet">➤</span> Infection controlled by administration of long-acting oxytetracycline</li>
+                        <li><span class="sub-sub-bullet">➤</span> Establishes premunity similar to that induced against babesiosis</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Vaccination:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Culture schizonts on tissue culture cell lines</li>
+                        <li><span class="sub-sub-bullet">➤</span> Vaccinate susceptible cattle</li>
+                        <li><span class="sub-sub-bullet">➤</span> Do not produce piroplasms, so animal cannot infect ticks</li>
+                        <li><span class="sub-sub-bullet">➤</span> Vaccinated cattle show good resistance to disease</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that the "infection-and-treatment method" involves deliberately infecting animals with Theileria and then controlling the infection with antibiotics. This allows the development of premunity without causing severe disease. The tissue culture vaccine is newer and has the advantage that vaccinated animals don't develop piroplasms, so they can't transmit the infection to ticks, breaking the transmission cycle.
+            </div>
+        </section>
+        
+        <div class="page-number">Page 9</div>
+    </div>
+
+    <!-- Page 10 -->
+    <div class="page">
+        <section>
+            <div class="exam-questions">
+                <h3>THEILERIOSIS - EXAM QUESTIONS:</h3>
+                <ol>
+                    <li>Define Theileriosis and describe its characteristic clinical features.</li>
+                    <li>Compare and contrast the etiology and geographical distribution of Theileria annulata and Theileria parva.</li>
+                    <li>Explain the unique pathogenesis of Theileria, including its effect on both lymphocytes and erythrocytes.</li>
+                    <li>Describe the diagnostic methods for Theileriosis, emphasizing the importance of lymph node examination.</li>
+                    <li>Discuss the challenges in treating Theileriosis and the rationale behind the "infection-and-treatment method" of control.</li>
+                </ol>
+            </div>
+
+            <div class="key-terms">
+                <h3>THEILERIOSIS - KEY TERMS:</h3>
+                <ul>
+                    <li><strong>Lymphoproliferative:</strong> Relating to the proliferation of lymphoid cells</li>
+                    <li><strong>Schizonts:</strong> A multinucleate stage in the life cycle of sporozoan parasites</li>
+                    <li><strong>Piroplasms:</strong> The stage of Theileria that infects red blood cells</li>
+                    <li><strong>Trans-stadial transmission:</strong> Transmission of a pathogen from one life stage of a vector to the next</li>
+                </ul>
+            </div>
+
+            <div class="section-divider"></div>
+            
+            <h2>VI. TRYPANOSOMOSIS</h2>
+            
+            <h3><span class="bullet-point">🔸</span> General Types</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Surra, El debab, El Gafar, Mal de caders, Murrina:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Caused by Trypanosoma evansi</li>
+                        <li><span class="sub-sub-bullet">➤</span> Affects horses and camels</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Nagana:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Caused by Trypanosoma brucei</li>
+                        <li><span class="sub-sub-bullet">➤</span> Affects equine, cattle and sheep</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Para nagana or Gambia fever:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Caused by Trypanosoma congolense</li>
+                        <li><span class="sub-sub-bullet">➤</span> Affects cattle, equine, sheep and camels</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Dourine:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Caused by Trypanosoma equiperdum</li>
+                        <li><span class="sub-sub-bullet">➤</span> Affects horses and donkeys</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that these are different types of trypanosomiasis affecting different animals and transmitted by different vectors. In Egypt, the most important type is Surra (Trypanosoma evansi), which primarily affects camels and horses. The professor noted that "Surra" is derived from a local language, while "El debab" and "El Gafar" are local names used in Egypt.
+            </div>
+
+            <h2 style="margin-top: 20pt;">A. SURRA</h2>
+            
+            <h3><span class="bullet-point">🔸</span> Definition</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Disease characteristics:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Acute, subacute or chronic disease</li>
+                        <li><span class="sub-sub-bullet">➤</span> Affects horses and camels</li>
+                        <li><span class="sub-sub-bullet">➤</span> Caused by Trypanosoma evansi</li>
+                        <li><span class="sub-sub-bullet">➤</span> Transmitted by biting flies</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Clinical features:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Fever</li>
+                        <li><span class="sub-sub-bullet">➤</span> Progressive emaciation</li>
+                        <li><span class="sub-sub-bullet">➤</span> Anemia</li>
+                        <li><span class="sub-sub-bullet">➤</span> Subcutaneous edema</li>
+                        <li><span class="sub-sub-bullet">➤</span> Nervous signs</li>
+                        <li><span class="sub-sub-bullet">➤</span> Death</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Significance:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Regarded as most significant health problem in camels</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor emphasized that Surra is a major problem in camel-rearing areas of Egypt. The disease can present in acute forms (rapid progression, high mortality) or chronic forms (slow progression, wasting over months to years). The professor noted that camels are particularly important economically in many regions, making this disease a significant concern.
+            </div>
+        </section>
+        
+        <div class="page-number">Page 10</div>
+    </div>
+
+    <!-- Page 11 -->
+    <div class="page">
+        <section>
+            <h3><span class="bullet-point">🔸</span> Etiology</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Organism characteristics:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Trypanosoma evansi is motile, spindle-shaped, flagellated trypanosome</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Synonyms:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Trypanosoma cameli</li>
+                        <li><span class="sub-sub-bullet">➤</span> Trypanosoma equinum</li>
+                        <li><span class="sub-sub-bullet">➤</span> Trypanosoma aegyptium</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Biological characteristic:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Not capable of cyclical development in tsetse fly</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that Trypanosoma evansi is mechanically transmitted (not requiring development in the insect vector), which distinguishes it from African trypanosomes transmitted by tsetse flies. The spindle shape and motility of the parasite are important diagnostic features when examining blood smears.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Transmission</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Mechanical transmission:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> By several blood-sucking flies</li>
+                        <li><span class="sub-sub-bullet">➤</span> Most important vector: Tabanus species</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Transmission process:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Fly bites infected animal</li>
+                        <li><span class="sub-sub-bullet">➤</span> Fly quickly bites susceptible animal</li>
+                        <li><span class="sub-sub-bullet">➤</span> Must occur within short time period</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor provided details about mechanical transmission:
+                <br>- Tabanus flies (horse flies) are the most important vectors
+                <br>- Transmission occurs when a fly bites an infected animal and then quickly bites another susceptible animal
+                <br>- The parasite must be transferred within a short time (minutes) as it cannot survive or develop in the fly
+                <br>- Other biting flies can also transmit, but Tabanus species are the most efficient
+                <br><br>The professor noted that this mechanical transmission is different from the biological transmission seen in tick-borne diseases.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Pathogenesis</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Parasite behavior:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Fluctuations in trypanosome numbers in blood responsible for periodic peaks of parasitemia</li>
+                        <li><span class="sub-sub-bullet">➤</span> Causes:
+                            <ul>
+                                <li>Multiplication of trypanosomes</li>
+                                <li>Elimination by host defense mechanism</li>
+                                <li>Migration between blood and solid tissues</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Metabolic effects:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Trypanosomes consume large amount of glucose leading to severe emaciation</li>
+                        <li><span class="sub-sub-bullet">➤</span> Glucose consumption produces pyruvate and other metabolic products causing:
+                            <ul>
+                                <li>Blood acidosis</li>
+                                <li>Destruction of erythrocytes</li>
+                                <li>Hemolytic anemia</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Effects on erythropoiesis:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Ability of infected animals to increase red cell production impaired due to bone marrow depression</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Mechanisms of anemia:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Erythrophagocytosis</li>
+                        <li><span class="sub-sub-bullet">➤</span> Reduced erythrocyte life-span due to production of sialidase (cleaves off erythrocytes surface sialic acid)</li>
+                        <li><span class="sub-sub-bullet">➤</span> Trauma by lashing action of powerful locomotory flagella</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Edema formation:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Occurs due to trypanosome multiplication in peripheral blood capillaries with metabolic products causing injury to capillary walls</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor elaborated on the pathogenesis, explaining the characteristic intermittent fever pattern seen in trypanosomiasis. This is due to the cycles of parasite multiplication and host immune response. The professor emphasized the multiple mechanisms leading to anemia:
+                <br>1. Direct destruction of red blood cells by the parasite
+                <br>2. Hemolysis due to metabolic byproducts (pyruvate)
+                <br>3. Bone marrow depression reducing production of new red blood cells
+                <br>4. Erythrophagocytosis (phagocytosis of red blood cells)
+                <br>5. Reduced red blood cell lifespan due to sialidase production
+                <br>6. Physical damage by the parasite's flagellum
+                <br><br>The professor also explained that the edema is due to damage to capillary walls from parasite multiplication and metabolic products.
+            </div>
+        </section>
+        
+        <div class="page-number">Page 11</div>
+    </div>
+
+    <!-- Page 12 -->
+    <div class="page">
+        <section>
+            <h3><span class="bullet-point">🔸</span> Clinical Signs</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> General signs:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Intermittent fever</li>
+                        <li><span class="sub-sub-bullet">➤</span> Progressive anemia</li>
+                        <li><span class="sub-sub-bullet">➤</span> Edema of dependent parts of body</li>
+                        <li><span class="sub-sub-bullet">➤</span> Dullness, listlessness</li>
+                        <li><span class="sub-sub-bullet">➤</span> Loss of body condition despite good appetite</li>
+                        <li><span class="sub-sub-bullet">➤</span> Yawning</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Terminal nervous signs:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Paraplegia</li>
+                        <li><span class="sub-sub-bullet">➤</span> Paralysis</li>
+                        <li><span class="sub-sub-bullet">➤</span> Delirium</li>
+                        <li><span class="sub-sub-bullet">➤</span> Convulsion</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Chronic form in camels:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> May exhibit chronic signs for years</li>
+                        <li><span class="sub-sub-bullet">➤</span> Reduction in milk yield and work capacity</li>
+                        <li><span class="sub-sub-bullet">➤</span> High abortion rate in pregnant females</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor described the clinical progression of Surra:
+                <br>- Initially, intermittent fever is noticed, with temperature rising and falling
+                <br>- As the disease progresses, anemia becomes evident with pale mucous membranes
+                <br>- Edema develops in dependent parts (ventral abdomen, legs, etc.)
+                <br>- Despite maintaining appetite, animals lose condition progressively
+                <br>- In chronic cases, animals may survive for years but with reduced productivity
+                <br>- In terminal stages, nervous signs may appear, including paralysis and convulsions
+                <br>- The professor noted that camels are particularly susceptible, with high mortality rates
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Diagnosis</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Field diagnosis:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Acute form:
+                            <ul>
+                                <li>Suspected from typical signs in endemic areas</li>
+                            </ul>
+                        </li>
+                        <li><span class="sub-sub-bullet">➤</span> Chronic infections:
+                            <ul>
+                                <li>Difficult due to absence of pathognomonic signs</li>
+                                <li>Suspected from chronic debilitating syndromes</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Laboratory diagnosis:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Microscopic examination:
+                            <ul>
+                                <li>Giemsa stained thick/thin blood smears</li>
+                                <li>Direct wet blood smears examination</li>
+                                <li>Microscopic examination of buffy coat plasma</li>
+                            </ul>
+                        </li>
+                        <li><span class="sub-sub-bullet">➤</span> Mice inoculation test</li>
+                        <li><span class="sub-sub-bullet">➤</span> Serological tests:
+                            <ul>
+                                <li>Latex agglutination test (surratex)</li>
+                                <li>Card agglutination test (CAT)</li>
+                                <li>ELISA</li>
+                                <li>Formol gel test</li>
+                                <li>Mercuric chloride test</li>
+                                <li>Thymol turbidity test</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor provided practical diagnostic advice:
+                <br>- For microscopic examination, it's best to examine blood during fever peaks when parasitemia is highest
+                <br>- Thick blood smears are more sensitive than thin smears for detecting low levels of parasites
+                <br>- Buffy coat examination concentrates the parasites, increasing detection sensitivity
+                <br>- The mouse inoculation test involves injecting blood from a suspected animal into mice and monitoring for infection
+                <br>- Serological tests are particularly useful for chronic cases where parasites may be scarce in blood
+                <br>- The professor noted that the formol gel test is a simple field test that can be used where laboratory facilities are limited
+            </div>
+        </section>
+        
+        <div class="page-number">Page 12</div>
+    </div>
+
+    <!-- Page 13 -->
+    <div class="page">
+        <section>
+            <h3><span class="bullet-point">🔸</span> Treatment</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Cymelarsan (Melarsen oxide and cysteamine):
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Dosage: 1 ml/25 kg body weight</li>
+                        <li><span class="sub-sub-bullet">➤</span> Administration: Intramuscular</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Quina-ject:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Dosage: 1 ml/40 kg body weight</li>
+                        <li><span class="sub-sub-bullet">➤</span> Administration: Subcutaneous</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Naganol (Suramine):
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Dosage: 10 mg/kg body weight</li>
+                        <li><span class="sub-sub-bullet">➤</span> Administration: Slow intravenous as 10% solution</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that treatment of trypanosomiasis can be challenging due to the potential for drug resistance and the chronic nature of the disease. The professor emphasized the importance of:
+                <br>- Correct dosage calculation based on body weight
+                <br>- Proper administration routes (e.g., slow intravenous injection for Naganol to prevent shock)
+                <br>- Monitoring for drug reactions
+                <br>- Considering the economic value of the animal when choosing treatment options
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Control</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Vector control challenges:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Difficult to control by destruction of vector (abundance of biting flies)</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Host-focused control measures:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Detection and treatment of infected animals</li>
+                        <li><span class="sub-sub-bullet">➤</span> Prophylactic treatment of susceptible animals</li>
+                        <li><span class="sub-sub-bullet">➤</span> Protection from biting flies</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that vector control is difficult due to the abundance and wide distribution of biting flies. Instead, control focuses on:
+                <br>- Regular screening of animals for infection
+                <br>- Prompt treatment of infected animals
+                <br>- Prophylactic treatment of valuable animals in high-risk areas
+                <br>- Physical protection from flies (e.g., insecticides, fly screens, etc.)
+                <br>- The professor noted that in camel-rearing areas, separating animals can help reduce transmission, as flies typically travel limited distances
+            </div>
+
+            <h2 style="margin-top: 20pt;">B. DOURINE (MAL DE COIT, EQUINE SYPHILIS, BREEDING DISEASE)</h2>
+            
+            <h3><span class="bullet-point">🔸</span> Definition</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Disease characteristics:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Chronic infectious disease</li>
+                        <li><span class="sub-sub-bullet">➤</span> Affects horses and donkeys</li>
+                        <li><span class="sub-sub-bullet">➤</span> Caused by Trypanosoma equiperdum</li>
+                        <li><span class="sub-sub-bullet">➤</span> Transmitted venereally by direct contact during coitus</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Clinical features:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Slow progressive course</li>
+                        <li><span class="sub-sub-bullet">➤</span> Inflammation of external genitalia</li>
+                        <li><span class="sub-sub-bullet">➤</span> Dermal plaques</li>
+                        <li><span class="sub-sub-bullet">➤</span> Terminal paralysis</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor emphasized that Dourine is unique among trypanosomiasis because it's transmitted venereally rather than by insect vectors. The disease has a chronic progression, often lasting months to years. The professor noted that it's called "equine syphilis" due to some similarities in transmission and chronic nature, though it's caused by a different organism.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Etiology</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Unique characteristic:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Trypanosoma equiperdum is only trypanosome transmitted by direct contact between animals</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Transmission method:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Transmitted venereally at coitus</li>
+                        <li><span class="sub-sub-bullet">➤</span> Does not require insect vector</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that Trypanosoma equiperdum is adapted for venereal transmission and does not survive in insect vectors. This distinguishes it from other trypanosomes. The parasite can be found in genital secretions and later in blood and tissues.
+            </div>
+        </section>
+        
+        <div class="page-number">Page 13</div>
+    </div>
+
+    <!-- Page 14 -->
+    <div class="page">
+        <section>
+            <h3><span class="bullet-point">🔸</span> Transmission</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Primary route:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Venereal transmission during mating</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Parasite location:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Initial stages: Found in vaginal discharge of infected mares or urethra of infected stallions</li>
+                        <li><span class="sub-sub-bullet">➤</span> Later stages: Invade blood and subcutaneous tissues, forming edematous plaques</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Alternative transmission:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Foals can contract infection by contamination of nasal/conjunctival mucous membranes with vaginal discharges</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor provided details about transmission:
+                <br>- The primary route is venereal transmission during mating
+                <br>- In early stages, parasites are found in genital secretions
+                <br>- As the disease progresses, parasites spread to blood and subcutaneous tissues
+                <br>- Foals can be infected through contact with contaminated discharges, not through placental transmission
+                <br>- The professor noted that artificial insemination can also transmit the disease if infected semen is used
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Pathogenesis</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Initial infection:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Trypanosomes deposited during coitus</li>
+                        <li><span class="sub-sub-bullet">➤</span> Penetrate intact genital mucosa</li>
+                        <li><span class="sub-sub-bullet">➤</span> Multiply locally and produce edema</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Systemic spread:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Subsequent systemic invasion occurs</li>
+                        <li><span class="sub-sub-bullet">➤</span> Localization in other tissues causes vascular injury and subcutaneous edema</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Nervous system involvement:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Invasion of nervous system leads to incoordination and paralysis</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor elaborated on the pathogenesis:
+                <br>- The parasite initially multiplies in the genital mucosa, causing local inflammation and edema
+                <br>- It then spreads systemically through the blood and lymphatic systems
+                <br>- The parasite has a tropism for blood vessels and nervous tissues
+                <br>- Damage to blood vessels leads to subcutaneous edema and plaque formation
+                <br>- Nervous system invasion causes the characteristic neurological signs in later stages
+                <br>- The professor noted that the chronic progression is due to the parasite's ability to evade the immune system
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Clinical Signs</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> General characteristics:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Incubation period: 1-4 weeks</li>
+                        <li><span class="sub-sub-bullet">➤</span> Sporadic occurrence with long course</li>
+                        <li><span class="sub-sub-bullet">➤</span> Fatality rate up to 50%</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Disease stages:
+                    <ul>
+                        <li><strong>1. Edema stage (4-6 months):</strong>
+                            <ul>
+                                <li>Mucoid vaginal or urethral discharge appears</li>
+                                <li>Low recurrent fever</li>
+                                <li>Edema of genitalia follows</li>
+                                <li>In mares: Swelling of vulva extends to udder and ventral abdomen</li>
+                                <li>In males: Edema of scrotum and prepuce extends forward to chest</li>
+                                <li>Ulceration of genital mucosa may leave depigmented scars</li>
+                            </ul>
+                        </li>
+                        <li><strong>2. Urticaria stage (3-4 days):</strong>
+                            <ul>
+                                <li>Urticarial plaques (2-10 cm or "dollar plaques") appear in all body parts (especially flanks)</li>
+                                <li>Plaques are sharply circumscribed, elevated and flat (like coins under skin)</li>
+                                <li>Plaques contain serous fluid rich in trypanosomes</li>
+                                <li>Disappear and may reappear later</li>
+                            </ul>
+                        </li>
+                        <li><strong>3. Paralysis stage:</strong>
+                            <ul>
+                                <li>Animal loses condition, becomes weak and lame in hindlimbs</li>
+                                <li>Muscular atrophy (especially gluteal region)</li>
+                                <li>Parasites invade central nervous system causing incoordination, ataxia and paralysis</li>
+                                <li>Animal lies down unable to rise until death</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor emphasized that the three-stage progression is characteristic of Dourine:
+                <br>- The edema stage begins with genital discharge and swelling, which may be mistaken for other reproductive diseases
+                <br>- The urticaria stage with "dollar plaques" is highly characteristic and diagnostic
+                <br>- The paralysis stage indicates nervous system involvement and carries a poor prognosis
+                <br>- The professor noted that the disease may progress slowly over years, with periods of remission and exacerbation
+            </div>
+        </section>
+        
+        <div class="page-number">Page 14</div>
+    </div>
+
+    <!-- Page 15 -->
+    <div class="page">
+        <section>
+            <h3><span class="bullet-point">🔸</span> Diagnosis</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Clinical symptoms:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Characteristic "dollar plaques" and swelling of genitalia</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Microscopical examination:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Samples taken from:
+                            <ul>
+                                <li>Genital swellings</li>
+                                <li>Mucoid discharges</li>
+                                <li>Squeezing dollar plaques</li>
+                                <li>Subcutaneous edema fluids</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Serological testing:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Complement Fixation Test (CFT) widely used for diagnosis</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor provided diagnostic guidance:
+                <br>- The characteristic "dollar plaques" are highly suggestive of Dourine
+                <br>- Microscopic examination of fluids from plaques or swellings may reveal trypanosomes
+                <br>- The Complement Fixation Test (CFT) is the most reliable serological test
+                <br>- The professor noted that diagnosis can be challenging in early stages or during remission periods
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Treatment</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Drug therapy:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Same treatment as surra disease
+                            <ul>
+                                <li>Cymelarsan</li>
+                                <li>Quina-ject</li>
+                                <li>Naganol</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Local treatment:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Surgical treatment of skin dollar plaques</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that treatment options are similar to those for Surra, including drugs like Cymelarsan, Quina-ject, and Naganol. Additionally, surgical treatment of the characteristic skin plaques may be attempted. The professor noted that treatment is more effective in early stages and becomes less responsive as the disease progresses, especially when nervous signs appear.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Control</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Import restrictions:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Prevent importation of horses from countries where disease is enzootic</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Testing protocols:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Test sera of stallions used for breeding by CFT before breeding season</li>
+                        <li><span class="sub-sub-bullet">➤</span> Remove positive cases</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Preventive measures:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Give prophylactic dose of trypanocidal drug shortly before mating</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Eradication measures:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Eradicate infected cases</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor emphasized control measures:
+                <br>- Strict import controls to prevent introduction of the disease
+                <br>- Regular testing of breeding animals, especially stallions
+                <br>- Prophylactic treatment before mating in endemic areas
+                <br>- Culling of infected animals to prevent spread
+                <br>- The professor noted that artificial insemination with tested semen can reduce transmission risk
+            </div>
+
+            <div class="exam-questions">
+                <h3>TRYPANOSOMOSIS - EXAM QUESTIONS:</h3>
+                <ol>
+                    <li>List the different types of trypanosomiasis and their causative agents.</li>
+                    <li>Define Surra and describe its economic importance in camel-rearing areas.</li>
+                    <li>Explain the mechanical transmission of Trypanosoma evansi and the role of Tabanus species.</li>
+                    <li>Describe the pathogenesis of Surra, including the multiple mechanisms leading to anemia.</li>
+                    <li>Outline the three clinical stages of Dourine and their characteristic features.</li>
+                    <li>Compare and contrast the transmission methods of Surra and Dourine.</li>
+                    <li>Discuss the control strategies for trypanosomiasis, highlighting the differences between vector-borne and venereally transmitted forms.</li>
+                </ol>
+            </div>
+
+            <div class="key-terms">
+                <h3>TRYPANOSOMOSIS - KEY TERMS:</h3>
+                <ul>
+                    <li><strong>Mechanical transmission:</strong> Transfer of a pathogen by a vector without development or multiplication within the vector</li>
+                    <li><strong>Venereal transmission:</strong> Transmission of a disease through sexual contact</li>
+                    <li><strong>Dollar plaques:</strong> Characteristic skin lesions in Dourine, appearing as coin-shaped raised areas</li>
+                    <li><strong>Intermittent fever:</strong> Fever that alternates with periods of normal temperature</li>
+                </ul>
+            </div>
+        </section>
+        
+        <div class="page-number">Page 15</div>
+    </div>
+
+    <!-- Page 16 -->
+    <div class="page">
+        <section>
+            <div class="section-divider"></div>
+            
+            <h2>VII. ANAPLASMOSIS (GALL SICKNESS)</h2>
+            
+            <h3><span class="bullet-point">🔸</span> Definition</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Disease characteristics:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Tick-borne infectious disease</li>
+                        <li><span class="sub-sub-bullet">➤</span> Affects cattle, sheep, goat, buffalo, horses and some wild ruminants</li>
+                        <li><span class="sub-sub-bullet">➤</span> Caused by rickettsia Anaplasma species</li>
+                        <li><span class="sub-sub-bullet">➤</span> Transmitted by ticks</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Clinical features:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Fever</li>
+                        <li><span class="sub-sub-bullet">➤</span> Progressive weakness</li>
+                        <li><span class="sub-sub-bullet">➤</span> Anemia</li>
+                        <li><span class="sub-sub-bullet">➤</span> Emaciation</li>
+                        <li><span class="sub-sub-bullet">➤</span> Jaundice</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Species variation:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Usually subclinical in sheep and goats</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor explained that Anaplasmosis is sometimes called "Gall Sickness" because of the jaundice (gall refers to bile). The disease is caused by rickettsia (bacteria-like organisms) rather than protozoa, distinguishing it from the other diseases covered. The professor noted that while it can affect multiple species, it's most clinically significant in cattle.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Etiology</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Host-specific species:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Cattle: A. marginale, A. centrale, A. ovis</li>
+                        <li><span class="sub-sub-bullet">➤</span> Sheep and goat: A. mesaeterum, A. ovis</li>
+                        <li><span class="sub-sub-bullet">➤</span> Buffalo: A. buffeli</li>
+                        <li><span class="sub-sub-bullet">➤</span> Horses: A. equi</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor emphasized that Anaplasma species are generally host-specific, meaning they typically infect only certain animal species. A. marginale is the most important species in cattle, while A. ovis affects sheep and goats. The professor noted that Anaplasma are rickettsia, which are bacteria-like organisms that live inside cells.
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Transmission</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Biological transmission:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> By ticks either stage to stage or trans-ovarially</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Mechanical transmission:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> By flies within first 2 hours after feeding</li>
+                        <li><span class="sub-sub-bullet">➤</span> By contaminated needle, surgical instruments and blood transfusion</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Other transmission routes:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Intrauterine transmission recorded</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Age susceptibility:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Young animals relatively resistant</li>
+                        <li><span class="sub-sub-bullet">➤</span> Cattle over 3 years commonly affected</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor provided details about transmission:
+                <br>- Ticks can transmit Anaplasma both between life stages (stage to stage) and to their eggs (transovarial)
+                <br>- Mechanical transmission by flies is possible but must occur within 2 hours of feeding on an infected animal
+                <br>- Iatrogenic transmission through contaminated instruments is common in veterinary practice
+                <br>- Transmission from cow to fetus (intrauterine) has been documented
+                <br>- Age resistance is significant, with older cattle (>3 years) being more susceptible and showing more severe disease
+            </div>
+        </section>
+        
+        <div class="page-number">Page 16</div>
+    </div>
+
+    <!-- Page 17 - Final Page -->
+    <div class="page">
+        <section>
+            <h3><span class="bullet-point">🔸</span> Clinical Signs</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> General characteristics:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Incubation period: 3-4 weeks</li>
+                        <li><span class="sub-sub-bullet">➤</span> Mortality rate: 20-50% in 3 years old cattle</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Disease forms:
+                    <ul>
+                        <li><strong>1. Peracute form:</strong>
+                            <ul>
+                                <li>Usually in cattle over 3 years (fatal)</li>
+                                <li>Signs: Pyrexia, rapid loss of milk production, anemia with pale mucous membranes</li>
+                                <li>Rapid breathing with excessive salivation</li>
+                                <li>Occasionally nervous signs and abnormal behavior</li>
+                            </ul>
+                        </li>
+                        <li><strong>2. Acute form:</strong>
+                            <ul>
+                                <li>Progressive pyrexia up to 41°C over few days</li>
+                                <li>Anemia, weakness, depression, anorexia</li>
+                                <li>Labored breathing, enlarged lymph nodes, jaundice, abortion</li>
+                                <li>Mucous membranes and thin skinned parts yellow ("Yellow cow")</li>
+                            </ul>
+                        </li>
+                        <li><strong>3. Chronic form:</strong>
+                            <ul>
+                                <li>Occurs following acute attack</li>
+                                <li>Signs: Anorexia, fever, rapid breathing, icterus continue for weeks</li>
+                                <li>Gradual emaciation for months</li>
+                                <li>Death may occur when anemia and icterus are extreme</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="audio-note">
+                <strong>🟡 From audio only:</strong> The professor described the clinical forms in detail:
+                <br>- The peracute form is most common in older cattle and progresses rapidly to death
+                <br>- The acute form shows progressive fever, anemia, and jaundice
+                <br>- The chronic form follows an acute episode and is characterized by prolonged wasting
+                <br>- The professor noted that the jaundice can be so pronounced that affected cattle are called "yellow cows"
+                <br>- Abortion is common in pregnant females with acute anaplasmosis
+            </div>
+
+            <h3><span class="bullet-point">🔸</span> Treatment and Control</h3>
+            <ul>
+                <li><span class="sub-bullet">🔹</span> Specific drugs:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Imidocarb dipropionate (Imizol): 1 ml/100 kg subcutaneous, repeated after 48 hours</li>
+                        <li><span class="sub-sub-bullet">➤</span> Oxytetracycline: 20 mg/kg intramuscular, given 4 times at 7 days interval</li>
+                    </ul>
+                </li>
+                <li><span class="sub-bullet">🔹</span> Control measures:
+                    <ul>
+                        <li><span class="sub-sub-bullet">➤</span> Detection and elimination of carriers by serology</li>
+                        <li><span class="sub-sub-bullet">➤</span> Vector control (ticks and flies)</li>
+                        <li><span class="sub-sub-bullet">➤</span> Vaccination in enzootic areas</li>
+                        <li><span class="sub-sub-bullet">➤</span> Proper disposal of infected carcasses</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="exam-questions">
+                <h3>ANAPLASMOSIS - EXAM QUESTIONS:</h3>
+                <ol>
+                    <li>Define Anaplasmosis and explain why it is sometimes called "Gall Sickness."</li>
+                    <li>List the Anaplasma species that affect different animal hosts.</li>
+                    <li>Describe the three clinical forms of Anaplasmosis and their characteristic features.</li>
+                    <li>Compare and contrast the transmission methods of Anaplasmosis with those of Babesiosis.</li>
+                </ol>
+            </div>
+
+            <div class="key-terms">
+                <h3>ANAPLASMOSIS - KEY TERMS:</h3>
+                <ul>
+                    <li><strong>Rickettsia:</strong> A type of bacteria that lives inside host cells</li>
+                    <li><strong>Icterus:</strong> Jaundice; yellowing of the skin and mucous membranes due to bilirubin deposition</li>
+                    <li><strong>Splenomegaly:</strong> Enlargement of the spleen</li>
+                    <li><strong>Hepatomegaly:</strong> Enlargement of the liver</li>
+                </ul>
+            </div>
+
+            <div class="section-divider"></div>
+            
+            <h2 style="text-align: center; color: #2196F3;">COMPREHENSIVE REVIEW QUIZ</h2>
+            
+            <div class="exam-questions">
+                <h3>FINAL COMPREHENSIVE QUESTIONS:</h3>
+                <ol>
+                    <li>List and describe the four main types of blood parasites covered in this lecture.</li>
+                    <li>Explain the problem of blood parasites in Egypt, including environmental, housing, and cultural factors.</li>
+                    <li>Differentiate between intracellular and intercellular blood parasites with examples.</li>
+                    <li>Define Babesiosis and describe its characteristic clinical features.</li>
+                    <li>Compare and contrast large and small Babesia species in terms of their pathogenicity and response to treatment.</li>
+                    <li>Describe the life cycle of Babesia in both the tick vector and vertebrate host.</li>
+                    <li>Explain the difference between transovarial and stage-to-stage transmission in ticks.</li>
+                    <li>Define Theileriosis and describe its unique pathogenesis involving both lymphocytes and erythrocytes.</li>
+                    <li>Compare and contrast Theileria annulata and Theileria parva in terms of geographical distribution and disease severity.</li>
+                    <li>List the different types of trypanosomiasis and their causative agents.</li>
+                    <li>Explain the difference between mechanical and biological transmission of parasites, with examples.</li>
+                    <li>Describe the three clinical stages of Dourine and their characteristic features.</li>
+                    <li>Define Anaplasmosis and explain why it differs from the other blood parasites discussed.</li>
+                    <li>Compare and contrast the clinical signs of Babesiosis and Anaplasmosis.</li>
+                    <li>Discuss the control strategies for tick-borne diseases, highlighting both vector control and host-focused approaches.</li>
+                </ol>
+            </div>
+
+            <div style="text-align: center; margin-top: 40pt; padding: 20pt; border: 2px solid #2196F3; border-radius: 10pt; background: #E3F2FD;">
+                <h3 style="color: #1976D2; margin-bottom: 10pt;">Complete Lecture Study Guide</h3>
+                <p style="font-size: 14pt; color: #333;">This comprehensive guide covers all essential aspects of blood parasites and hemoprotozoal diseases in veterinary parasitology.</p>
+                <p style="font-size: 12pt; color: #666; font-style: italic;">Total Pages: 17 | Complete Coverage: Babesiosis, Theileriosis, Trypanosomosis (Surra & Dourine), and Anaplasmosis</p>
+                <p style="font-size: 12pt; color: #666; font-style: italic;">For additional study materials and practice questions, consult your course textbook and laboratory manual.</p>
+            </div>
+        </section>
+        
+        <div class="page-number">Page 17</div>
+    </div>
+
+    <script>
+        // Print Functions
+        function printDocument() {
+            showToast('Preparing for printing...');
+            
+            // Apply print options
+            applyPrintOptions();
+            
+            setTimeout(() => {
+                window.print();
+                showToast('Document sent to printer ✓');
+            }, 500);
+        }
+        
+        function quickPrint() {
+            window.print();
+        }
+        
+        function togglePrintOptions() {
+            const options = document.getElementById('printOptions');
+            options.classList.toggle('show');
+        }
+        
+        function applyPrintOptions() {
+            const printColors = document.getElementById('printColors').checked;
+            const printImages = document.getElementById('printImages').checked;
+            const printPageNumbers = document.getElementById('printPageNumbers').checked;
+            
+            // Apply options dynamically
+            if (!printColors) {
+                document.body.style.filter = 'grayscale(100%)';
+            }
+            
+            if (!printImages) {
+                document.querySelectorAll('img').forEach(img => {
+                    img.style.display = 'none';
+                });
+            }
+            
+            if (!printPageNumbers) {
+                document.querySelectorAll('.page-number').forEach(num => {
+                    num.style.display = 'none';
+                });
+            }
+            
+            // Reset after printing
+            window.addEventListener('afterprint', () => {
+                document.body.style.filter = '';
+                document.querySelectorAll('img').forEach(img => {
+                    img.style.display = '';
+                });
+                document.querySelectorAll('.page-number').forEach(num => {
+                    num.style.display = '';
+                });
+            });
+        }
+        
+        function printPreview() {
+            const modal = document.getElementById('printPreviewModal');
+            const previewContent = document.getElementById('previewContent');
+            
+            // Clone content for preview
+            const pages = document.querySelectorAll('.page');
+            previewContent.innerHTML = '';
+            
+            pages.forEach(page => {
+                const clone = page.cloneNode(true);
+                clone.style.transform = 'scale(0.7)';
+                clone.style.margin = '20px auto';
+                previewContent.appendChild(clone);
+            });
+            
+            modal.style.display = 'block';
+        }
+        
+        function closePrintPreview() {
+            document.getElementById('printPreviewModal').style.display = 'none';
+        }
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Keyboard Shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl+P or Cmd+P
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                printDocument();
+            }
+        });
+        
+        // Auto page numbering
+        window.addEventListener('load', () => {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach((page, index) => {
+                const pageNum = page.querySelector('.page-number');
+                if (pageNum) {
+                    pageNum.textContent = `Page ${index + 1} of ${pages.length}`;
+                }
+            });
+        });
+        
+        // Close print options when clicking outside
+        document.addEventListener('click', (e) => {
+            const printOptions = document.getElementById('printOptions');
+            const printControls = document.querySelector('.print-controls');
+            
+            if (!printControls.contains(e.target)) {
+                printOptions.classList.remove('show');
+            }
+        });
+    </script>
+
+</body>
+</html>
